@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+    web:
+      build: ./web
+      environment:
+          - APACHE_RUN_USER=#1000
+      volumes:
+          - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      ports:
+          - 8080:80
+      working_dir: ${APP_PATH_CONTAINER}
+    db:
+      build: ./initdb
+      restart: always
+      environment:
+        MARIADB_ROOT_PASSWORD: AjylCgbldfujyf
+      volumes:
+        - ${DB_PATH_HOST}:/var/lib/mysql
+
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 6080:8080
+
+    composer:
+      image: composer:2.5.8
+      volumes:
+        - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      working_dir: ${APP_PATH_CONTAINER}
+      command: composer install
