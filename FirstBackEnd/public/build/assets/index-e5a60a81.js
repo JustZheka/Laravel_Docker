@@ -1,0 +1,1 @@
+document.querySelector(".Sort").addEventListener("change",a);var e="NumAsc";function a(s){let c=s.target;switch(c.checked=!0,c.id){case"NumAsc":e="NumAsc";break;case"NumDes":e="NumDes";break;case"AlphAsc":e="AlphAsc";break;case"AlphDes":e="AlphDes";break}window.location.replace(window.location.href+"sort/"+e)}

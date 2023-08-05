@@ -15,7 +15,7 @@ services:
       build: ./initdb
       restart: always
       environment:
-        MARIADB_ROOT_PASSWORD: AjylCgbldfujyf
+        MARIADB_ROOT_PASSWORD: 123456
       volumes:
         - ${DB_PATH_HOST}:/var/lib/mysql
 
